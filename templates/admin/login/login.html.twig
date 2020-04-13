@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'agence_immo' %}
+
+{% block body %}
+    <h1>Connexion</h1>
+    {% if error %}
+        <div class="error">
+         {{error.messageKey}}
+        </div>
+    {% endif %}
+    {{form_start(form)}}
+        {{form_rest(form)}}
+        <button class="btn btn-primary" type="submit">Valider</button>
+    {{form_end(form)}}
+{% endblock %}

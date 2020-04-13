@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'agence_immo' %}
+
+{% block body %}
+    <h1>home page</h1>
+
+    <div class="row flex">
+        {% for property in properties %}
+            {% include 'components/card_property.html.twig' %}
+        {% endfor %}
+    </div>
+{% endblock %}

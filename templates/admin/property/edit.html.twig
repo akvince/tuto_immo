@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'agence_immo' %}
+
+{% block body %}
+    <h1>admin edit property {{property.title}} </h1>
+
+    {{ include('admin/property/component/form.html.twig', {button: 'Editer'}) }}
+
+{% endblock %}

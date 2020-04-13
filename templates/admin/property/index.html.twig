@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'agence_immo' %}
+
+{% block body %}
+    <h1>admin properties page</h1>
+
+    {%  for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-8">Titre</div>
+        <div class="col-md-4">Actions</div>
+    </div>
+    <div class="row mt-4">
+        {% for property in properties %}
+                <div class="col-md-8 mt-2">{{property.title}}</div>
+                <div class="col-md-4 mt-2">
+                    <a class="btn btn-secondary mr-1" href="{{path('adminEdit', {id: property.id})}}">Editer</a>
+                    <form 
+                        method="POST" 
+                        onSubmit="return confirm('Etes vous vraiment sur ?')"
+                        action={{ path('adminDelete', {id: property.id})}}>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ property.id) }}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <a href="{{path('adminCreate') }}" class="btn btn-secondary">Create new property</a>
+    </div>
+{% endblock %}

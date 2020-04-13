@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'agence_immo' %}
+
+{% block body %}
+    <h1>create edit property</h1>
+
+    {{ include('admin/property/component/form.html.twig', {button: 'Créer'}) }}
+
+{% endblock %}
