@@ -3,11 +3,13 @@
 {% block title 'agence_immo' %}
 
 {% block body %}
-    <h1>home page</h1>
+    <div class="container">
+        <h1>home page</h1>
 
-    <div class="row flex">
-        {% for property in properties %}
-            {% include 'components/card_property.html.twig' %}
-        {% endfor %}
+        <div class="row flex">
+            {% for property in properties %}
+                {% include 'components/card_property.html.twig' %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

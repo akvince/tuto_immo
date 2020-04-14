@@ -10,30 +10,33 @@
     use Knp\Component\Pager\PaginatorInterface;
     use App\Entity\PropertySearch;
     use App\Form\PropertySearchType;
+    use App\Form\IntergerType;
 
     class PropertiesController extends AbstractController
     {
 
-        public function __construct(PropertyRepository $repository, EntityManagerInterface $em)
+        public function __construct(EntityManagerInterface $em)
         {
-            $this->propertiesQuery = $repository->findNotSoldQuery();
-            $this->properties = $repository->findNotSold();
+            // $this->properties = $repository->findNotSold();
             $this->em = $em;
         }
-
-        public function Index(PaginatorInterface $paginator, Request $request):Response
+        
+        public function Index(PropertyRepository $repository, PaginatorInterface $paginator, Request $request):Response
         {
-            
-
+            $search = new PropertySearch();
+            $form = $this->createForm(PropertySearchType::class, $search);
+            $form->handleRequest($request);
+            $propertiesQuery = $repository->findNotSoldQuery($search);
             $properties = $paginator->paginate(
-                $this->propertiesQuery,
+                $propertiesQuery,
                 $request->query->getInt('page', 1),
                 8
             );
 
             return $this->render('properties/properties.html.twig', [
                 'properties' => $properties,
-                'current_menu' => 'properties'
+                'current_menu' => 'properties',
+                'form' => $form->createView()
             ]);
         }
     }

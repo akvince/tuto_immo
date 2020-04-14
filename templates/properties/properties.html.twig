@@ -3,11 +3,29 @@
 {% block title 'properties of agence_immo' %}
 
 {% block body %}
-    <h1>les biens</h1>
-    <div class="row flex">
-        {% for property in properties %}
-            {% include 'components/card_property.html.twig' %}
-        {% endfor %}
+    <div class="jumbotron">
+        {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.minSurface) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.maxPrice) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Rechercher</div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+    <div class="container">
+        <h1>les biens</h1>
+
+        <div class="row flex">
+            {% for property in properties %}
+                {% include 'components/card_property.html.twig' %}
+            {% endfor %}
+        </div>
     </div>
     {{ knp_pagination_render(properties) }}
 {% endblock %}
