@@ -44,21 +44,27 @@ class PropertyRepository extends ServiceEntityRepository
         return $query->getQuery();
     }
 
-    // /**
-    //  * @return Property[]
-    //  */
-    // public function findNotSold():array
-    // {
-    //     return $this->findNotSoldQuery()
-    //         ->getResult();
-    // }
+    public function findNotSoldQueryNoSearch():Query
+    {
+        $query = $this->findNotSoldQueryBuilder();
+        return $query->getQuery();
+    }
+
+    /**
+     * @return Property[]
+     */
+    public function findNotSold():array
+    {
+        return $this->findNotSoldQueryNoSearch()
+            ->getResult();
+    }
 
     /**
      * @return Property[]
      */
     public function findLatest():array
     {
-        return $this->findNotSoldQuery()
+        return $this->findNotSoldQueryNoSearch()
             ->setMaxResults(4)
             ->getResult();
     }
