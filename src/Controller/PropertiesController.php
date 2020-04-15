@@ -17,7 +17,6 @@
 
         public function __construct(EntityManagerInterface $em)
         {
-            // $this->properties = $repository->findNotSold();
             $this->em = $em;
         }
         

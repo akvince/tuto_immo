@@ -17,6 +17,12 @@
                 <div class="h3">{{property.surface}} m²</div>
                 <div class="text-info h2">{{property.priceWithCurrency}}</div>
             </div>
+            {% if property.options is not empty %}
+                <hr>
+            {% endif %}
+            {% for option in property.options %}
+                <span class="badge badge-secondary">{{option.name}}</span>
+            {% endfor %}
         </div>
     </div>
 </div>
