@@ -8,3 +8,14 @@
     {{ include('admin/property/component/form.html.twig', {button: 'Créer'}) }}
 
 {% endblock %}
+
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.full.min.js"></script>
+    <script>
+        $('select').select2();
+    </script>
+{% endblock %}
