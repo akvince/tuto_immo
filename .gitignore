@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 public/images
 public/media
-=======
-/public/images
-/public/media
->>>>>>> develop
+!public/images/noimage.jpg
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
